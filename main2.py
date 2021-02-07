@@ -10,6 +10,7 @@ from entidades.Marcas import Marcas
 from flask_restful import Resource, Api
 from rutas.Producto import Producto
 from rutas.Categoria import Categoria
+from rutas.Marca import Marca
 
 
 app = Flask(__name__)
@@ -37,9 +38,11 @@ api = Api(app)
 
 ruta_producto = Producto(Resource, db, obj_Productos).RutaProducto
 ruta_categoria = Categoria(Resource, db, obj_Categorias).RutaCategoria
+ruta_marca = Marca(Resource, db, obj_Marcas).RutaMarca
 #
 api.add_resource(ruta_producto, '/productos')
 api.add_resource(ruta_categoria, '/categoria')
+api.add_resource(ruta_marca, '/marca')
 
 if __name__ == '__main__':
     app.run(debug=True)

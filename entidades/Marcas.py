@@ -6,11 +6,10 @@ class Marcas:
             __tablename__ = "tbl_marcas"
 
             id_marca = db.Column(db.Integer, primary_key=True)
-            nombre = db.Column(db.String(45))
+            nombre = db.Column(db.String(45),unique=True)
             productos = db.relationship('ProductosModel', backref='MarcaModel')
 
-            def __init__(self, id_marca, nombre):
-                self.id_marca = id_marca
+            def __init__(self, nombre):
                 self.nombre = nombre
         class MarcaSquema(ma.Schema):
             class Meta:
