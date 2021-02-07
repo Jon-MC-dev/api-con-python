@@ -6,7 +6,7 @@ class Categorias:
             __tablename__ = "tbl_categorias"
 
             categoria_id = db.Column(db.Integer, primary_key=True)
-            nombre = db.Column(db.String(40))
+            nombre = db.Column(db.String(40), unique=True)
             productos = db.relationship('ProductosModel', backref='CategoriaModel')
 
             def __init__(self, nombre):
